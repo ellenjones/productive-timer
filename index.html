@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>Productive Timer</title>
+		<link type="text/css" rel="stylesheet" href="style.css"/>
+	</head>
+	<body>
+		<div id="timeset">
+		  <h3>
+		Setup Target Ranges:
+		</h3>
+		  <fieldset>
+		    <legend>Pre-Target Color</legend>
+		    <input type='text' id='start1' placeholder="starting &deg;" tabindex="1" />
+		    <br>
+		    <input type='text' id='stop1' placeholder="stopping &deg;" tabindex="2" />
+		    <br>
+		    <button id="draw1"> Draw </button>
+		  </fieldset>
+		  <fieldset>
+		    <legend>Target Color</legend>
+		    <input type='text' id='start2' placeholder="starting &deg;" tabindex="3" />
+		    <br>
+		    <input type='text' id='stop2' placeholder="stopping &deg;" tabindex="4" />
+		    <br>
+		    <button id="draw2"> Draw </button>
+		  </fieldset>
+		  <fieldset>
+		    <legend>Post-Target (deadline) Color</legend>
+		    <input type='text' id='start3' placeholder="starting &deg;" tabindex="5" />
+		    <br>
+		    <input type='text' id='stop3' placeholder="stopping &deg;" tabindex="6" />
+		    <br>
+		    <button id="draw3"> Draw </button>
+		  </fieldset>
+		  <h3>
+		Timer:
+		</h3>
+		  <fieldset>
+		    <legend>Set Time</legend>
+		    <input type='text' id='minutes' placeholder="minutes" tabindex="7" />
+		    <br>
+		    <button id="startTimer">Start Timer</button>
+		  </fieldset>
+		</div>
+		<div class="timer">
+		  <svg class="rotate" viewbox="0 0 250 250">
+		    <path id="background" transform="translate(125,125)" d="M 0 0 v -125 A 125 125 1 1 1 -.01 -125 z" />
+		    <path id="path1" transform="translate(125, 125)" />
+		    <path id="path2" transform="translate(125, 125)" />
+		    <path id="path3" transform="translate(125, 125)" />
+		    <path id="loader" transform="translate(125, 125)" />
+		  </svg>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
