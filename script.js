@@ -99,5 +99,4 @@ document.getElementById('set').addEventListener('keyup', function(event) {
   if (event.keyCode == 13) {
     setTime();
   }
-document.getElementById('minutes').addEventListener('keyup', function(event) {
 });
