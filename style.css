@@ -1,3 +1,15 @@
+#timeset {
+  width: 50%;
+  float: left;
+  padding: 0 0 0 5%;
+}
+
+.setTimer {
+  display: block;
+  text-align: center;
+  padding: 15px 15px 5px 15px;
+}
+
 .timer {
   overflow: hidden;
   margin: 0 auto;
@@ -5,7 +17,7 @@
   border-radius: 100%;
   width: 30%;
   float: right;
-  padding: 5%;
+  padding: 0 5%;
 }
 
 .rotate {
@@ -22,23 +34,19 @@
   transition: fill 2s;
 }
 
-#path1 {
+#preTarget {
   fill: #ac4d9d;
   transition: fill 2s;
 }
 
-#path2 {
+#target {
   fill: #349946;
   transition: fill 2s;
 }
 
-#path3 {
+#postTarget {
   fill: #ffcd33;
   transition: fill 2s;
 }
 
-#timeset {
-  width: 50%;
-  float: left;
-  padding: 0 0 0 5%;
-}
+

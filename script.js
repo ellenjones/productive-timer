@@ -1,13 +1,50 @@
 var loader = document.getElementById('loader'),
   alpha = 0,
-  pi = Math.PI;
+  pi = Math.PI,
+  totalMinutes = 0;
 
-function draw(id) {
+function setTime() {
+  document.getElementById('set').disabled = true;
 
-  path = document.getElementById('path' + id)
+  preTarget = document.getElementById('setPreTarget').value;
+  target = document.getElementById('setTarget').value;
+  postTarget = document.getElementById('setPostTarget').value;
+  console.log('preTarget: ' + preTarget, '  target: ' + target, '  postTarget: ' + postTarget);
+  
+  totalMinutes = (+preTarget) + (+target) + (+postTarget);
+  console.log('minutes: ' + totalMinutes);
+  
+  preTarget = preTarget / totalMinutes;
+  target = target / totalMinutes;
+  postTarget = postTarget / totalMinutes;
+  console.log('fraction of whole circle', preTarget, target, postTarget);
 
-  alpha1 = document.getElementById('start' + id).value;
-  alpha2 = document.getElementById('stop' + id).value;
+  preTarget = preTarget * 360;
+  target = target * 360;
+  postTarget = postTarget *360;
+  console.log('degrees:', preTarget, target, postTarget);
+
+/*** alphas get their input from here ** */
+/*  preTargetStart = 0;
+  preTargetStop = preTarget;
+  targetStart = preTargetStop;
+  targetStop = preTargetStop + target;
+  postTargetStart = targetStop;
+  postTargetStop = 360; */
+
+  draw('preTarget',0,preTarget);
+  draw('target',preTarget,(preTarget + target));
+  draw('postTarget',(preTarget + target),360);
+  
+  timer();
+};
+
+
+function draw(path,startValue,stopValue) {
+  path = document.getElementById(path);
+  console.log('path:',path);
+  alpha1 = startValue;
+  alpha2 = stopValue;
   var r1 = (alpha1 * pi / 180),
     r2 = (alpha2 * pi / 180),
     xC = Math.sin(r2) * 125,
@@ -21,19 +58,11 @@ function draw(id) {
 };
 
 
-
-
 function timer() {
-  var minutes = document.getElementById('minutes');
-
-  var t = ((minutes.value * 1000) / 6); /*divide by 6 to get minutes because 360/60 = 6*/
+  var t = ((totalMinutes * 1000) / 6); /*divide by 6 to get minutes because 360/60 = 6*/
   alpha++;
 
-  console.log("minutes", minutes.value);
-  console.log("t", t);
-  console.log("alpha", alpha);
-
-
+  console.log("minutes", totalMinutes.value, "t", t, "alpha", alpha);
 
   var r = (alpha * pi / 180),
     x = Math.sin(r) * 125,
@@ -47,61 +76,28 @@ function timer() {
     setTimeout(timer, t); //Redraw
   } else {
     anim = "M 0 0 v -125 A 125 125 1 1 1 -.01 -125 z";
-    document.getElementById('loader').style.fill = "#b50000";
+    document.getElementById('loader').style.fill = "#000000";
   }
   loader.setAttribute("d", anim);
 
 };
 
-document.getElementById('startTimer').onclick = function() {
-  timer()
+/* Set Colored Sections and Start Timer */
+document.getElementById('set').onclick = function(){
+  setTime();
 };
 
-
-
-
-document.getElementById('draw1').onclick = function() {
-  draw(1)
-};
-
-document.getElementById('draw2').onclick = function() {
-  draw(2)
-};
-
-document.getElementById('draw3').onclick = function() {
-  draw(3)
-};
-
-document.getElementById('stop1').addEventListener('keyup', function(event) {
+document.getElementById('setPostTarget').addEventListener('keyup', function(event) {
   event.preventDefault();
   if (event.keyCode == 13) {
-    draw(1);
-    draw(2);
-    draw(3);
+    setTime();
   }
 });
 
-document.getElementById('stop2').addEventListener('keyup', function(event) {
+document.getElementById('set').addEventListener('keyup', function(event) {
   event.preventDefault();
   if (event.keyCode == 13) {
-    draw(1);
-    draw(2);
-    draw(3);
+    setTime();
   }
-});
-
-document.getElementById('stop3').addEventListener('keyup', function(event) {
-  event.preventDefault();
-  if (event.keyCode == 13) {
-    draw(1);
-    draw(2);
-    draw(3);
-  }
-});
-
 document.getElementById('minutes').addEventListener('keyup', function(event) {
-  event.preventDefault();
-  if (event.keyCode == 13) {
-    timer();
-  }
 });
