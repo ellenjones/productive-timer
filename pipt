@@ -1,0 +1,39 @@
+#! /bin/bash
+echo ""
+echo "+--------------------- Pi Productivity Timer ---------------------+"
+echo "|                                                                 |"
+          for i in $@
+           do
+            case $i in
+               -r|--refresh)
+echo "|  ~ Refresh argument given. Reloading in Firefox.                |"
+                firefox -remote --display=:0 "openURL(file:///var/www/html/index.html)"
+              ;;
+               -s|--stop)
+echo "|  ~ Stop argument given. Closing Firefox                         |"
+               pkill firefox
+              ;;
+              *)
+echo "|  ~ Unknown argument $i.                                         |" 
+echo "|    Usage: pipt [-r|--refresh](not working)[-s|--stop]           |"
+echo "|       ~call with no arguments to launch/re-launch~              |"
+              ;;
+            esac
+echo "|                                                                 |"
+echo "+-----------------------------------------------------------------+"
+echo ""
+          exit 0  
+          done
+echo "|  ~ checking if firefox is already running...                    |"
+ps -e | grep firefox > /dev/null && pkill -1 firefox && \
+echo "|    ...firefox was already running but has been closed now.      |"||\
+echo "|    ...firefox is not running yet.                               |"
+echo "|                                                                 |"
+echo "|  ~ Launching Pi Productivity Timer in Firefox on display 0.     |"
+
+firefox  --display=:0 "file:///var/www/html/index.html" &
+
+echo "|    * re-run this script to refresh content as needed.           |"
+echo "|                                                                 |"
+echo "+-----------------------------------------------------------------+"
+echo ""
