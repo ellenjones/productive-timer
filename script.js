@@ -4,8 +4,9 @@ var loader = document.getElementById('loader'),
   totalMinutes = 0;
 
 function setTime() {
-  document.getElementById('set').disabled = true;
-
+  //document.getElementById('set').disabled = true;
+  document.getElementById('timeset').style.display = "none";
+  document.getElementById('timer').style.display = "block";
   preTarget = document.getElementById('setPreTarget').value;
   target = document.getElementById('setTarget').value;
   postTarget = document.getElementById('setPostTarget').value;
@@ -81,6 +82,62 @@ function timer() {
   loader.setAttribute("d", anim);
 
 };
+
+document.getElementById('excellentMinus').onclick = function(){
+  field = document.getElementById('setPreTarget');
+  field.value = +field.value - 1;
+  if (field.value < 0)  {
+	field.value = 0
+	field.style.color = 'red';
+  }; 
+};
+
+document.getElementById('excellentPlus').onclick = function(){
+  field = document.getElementById('setPreTarget');
+  field.value = +field.value + 1;
+  if (field.value > 0) {
+	field.style.color = 'purple';
+  };
+};
+
+document.getElementById('goodMinus').onclick = function(){
+  field = document.getElementById('setTarget');
+  field.value = +field.value - 1;
+  if (field.value < 0)  {
+	field.value = 0
+	field.style.color = 'red';
+  }; 
+};
+
+document.getElementById('goodPlus').onclick = function(){
+  var field = document.getElementById('setTarget');
+  field.value = +field.value + 1;
+  if (field.value > 0) {
+	field.style.color = 'green';
+  };
+};
+
+document.getElementById('improveMinus').onclick = function(){
+  field = document.getElementById('setPostTarget');
+  field.value = +field.value - 1;
+  if (field.value < 0)  {
+	field.value = 0
+	field.style.color = 'red';
+  }; 
+};
+
+document.getElementById('improvePlus').onclick = function(){
+  var field = document.getElementById('setPostTarget');
+  field.value = +field.value + 1;
+  if (field.value > 0) {
+	field.style.color = 'olive';
+  };
+};
+
+document.getElementById('timer').onclick = function() {
+  location.reload();
+};
+
 
 /* Set Colored Sections and Start Timer */
 document.getElementById('set').onclick = function(){

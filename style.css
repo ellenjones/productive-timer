@@ -1,13 +1,107 @@
 #timeset {
-  width: 50%;
+  width: 100%;
+}
+
+#excellentMinus{
+  height: 30px;
+  width: 20%;
+  padding: none;
+  background-color: purple;
   float: left;
-  padding: 0 0 0 5%;
+  margin-right: 5%;
+  text-align: center;
+  color: white;
+  border-radius: 8px;
+}
+
+#excellentPlus{
+  height: 30px;
+  width: 20%;
+  padding: none ;
+  background-color: purple;
+  float: right;
+  margin-left: 5%;
+  text-align: center;
+  color: white;
+  border-radius: 8px;
+}
+
+#goodMinus{
+  height: 30px;
+  width: 20%;
+  padding: none;
+  background-color: green;
+  float: left;
+  margin-right: 5%;
+  text-align: center;
+  color: white;
+  border-radius: 8px;
+}
+
+#goodPlus{
+  height: 30px;
+  width: 20%;
+  padding: none ;
+  background-color: green;
+  float: right;
+  margin-left: 5%;
+  text-align: center;
+  color: white;
+  border-radius: 8px;
+}
+
+#improveMinus{
+  height: 30px;
+  width: 20%;
+  padding: none;
+  background-color: olive;
+  float: left;
+  margin-right: 5%;
+  text-align: center;
+  color: white;
+  border-radius: 8px;
+}
+
+#improvePlus{
+  height: 30px;
+  width: 20%;
+  padding: none ;
+  background-color: olive;
+  float: right;
+  margin-left: 5%;
+  text-align: center;
+  color: white;
+  border-radius: 8px;
+}
+
+input {
+  width: 50%;
+  font-weight:bold;
+  text-align:center;
+}
+
+.mainFieldset {
+  width: 70%;
+  float: left;
+}
+
+.go {
+  width: 5%;
+  float: right;
+  padding: none;
+  height: 207px;
+}
+
+#set {
+  padding: none;
+  background-color:green;
+  height:100%;
+  border-radius:8px;
 }
 
 .setTimer {
   display: block;
   text-align: center;
-  padding: 15px 15px 5px 15px;
 }
 
 .timer {
@@ -15,9 +109,10 @@
   margin: 0 auto;
   position: relative;
   border-radius: 100%;
-  width: 30%;
-  float: right;
+  width: 90%;
+  /*float: right;*/
   padding: 0 5%;
+  display: none;
 }
 
 .rotate {
